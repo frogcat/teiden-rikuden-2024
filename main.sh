@@ -3,6 +3,9 @@
 url1=https://www.rikuden.co.jp/nw/teiden/f2/now/otj030.html
 temp=temp.html
 
+which xsltproc
+which curl
+
 curl -s $url1 > $temp
 file=dist/$(xsltproc --html xsl/time.xsl $temp 2> /dev/null).csv
 
