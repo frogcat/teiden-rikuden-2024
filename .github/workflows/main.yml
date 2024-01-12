@@ -13,7 +13,8 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install xsltproc
       - uses: actions/checkout@v3
-      - run: bash main.sh
+      - run: pip install -r requirements.txt
+      - run: python3 main.py
       - run: git config --local user.email "frogcat@users.noreply.github.com"
       - run: git config --local user.name "frogcat-bot"
       - run: git add dist
