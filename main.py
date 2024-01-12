@@ -4,16 +4,20 @@ import requests
 from bs4 import BeautifulSoup
 
 
+# 停電情報配下の HTML を取得して BeautifulSoup を返す
 def fetch(filename):
     base = "https://www.rikuden.co.jp/nw/teiden/f2/now/"
     res = requests.get(base + filename)
     return BeautifulSoup(res.content, "html.parser")
 
 
+# 全域の HTML を取得
+soup = fetch("otj030.html")
+
+# 更新日時をチェックし、すでに処理済みであれば終了
 dist = "./dist/"
 files = [s for s in os.listdir(dist) if ".csv" in s]
 
-soup = fetch("otj030.html")
 time = soup.select_one("div#time").get_text()
 file = "".join(filter(str.isdigit, time)) + ".csv"
 
@@ -21,7 +25,7 @@ if file in files:
     print(f"The file {file} exists.")
     sys.exit(1)
 
-files.append(file)
+# スクレイピング処理本体
 table = []
 
 for a in soup.select("tr.on-color"):
@@ -35,13 +39,15 @@ for a in soup.select("tr.on-color"):
             row = [td[1], code, pref, city, td[0], td[2], td[3], td[4], td[5]]
             table.append(",".join(row))
 
-table.sort()
-
-
+# 新規CSVの書き込み
 with open(dist + file, "w") as f:
-    f.write("\n".join(table))
+    f.write("\n".join(sorted(table)))
     f.write("\n")
 
+# ファイルリストの書き込み
 with open(dist + "files.txt", "w") as f:
+    files.append(file)
     f.write("\n".join(sorted(files)))
     f.write("\n")
+
+print(f"Wrote {file}")
