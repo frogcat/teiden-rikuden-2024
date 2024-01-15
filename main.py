@@ -15,7 +15,7 @@ def fetch(filename):
 soup = fetch("otj030.html")
 
 # 更新日時をチェックし、すでに処理済みであれば終了
-dist = "./dist/"
+dist = "./docs/"
 files = [s for s in os.listdir(dist) if ".csv" in s]
 
 time = soup.select_one("div#time").get_text()
