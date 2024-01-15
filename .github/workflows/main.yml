@@ -15,6 +15,6 @@ jobs:
       - run: python3 main.py
       - run: git config --local user.email "frogcat@users.noreply.github.com"
       - run: git config --local user.name "frogcat-bot"
-      - run: git add dist
-      - run: git commit -m "Update dist"
+      - run: git add docs
+      - run: git commit -m "Update docs"
       - uses: ad-m/github-push-action@master
