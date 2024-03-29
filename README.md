@@ -2,6 +2,8 @@
 
 [能登半島地震 (2024 年)](<https://ja.wikipedia.org/wiki/%E8%83%BD%E7%99%BB%E5%8D%8A%E5%B3%B6%E5%9C%B0%E9%9C%87_(2024%E5%B9%B4)>) を原因とした [北陸電力](www.rikuden.co.jp) の [停電情報](https://www.rikuden.co.jp/nw/teiden/otj010.html) のスクレイピングデータです。
 
+なお [branch:address-base-registry](https://github.com/frogcat/teiden-rikuden-2024/tree/address-base-registry) ではスクレイピングデータに対する属性拡張（アドレスベースレジストリ町字コード）を試行しています。
+
 # Note
 
 - 2024 年 1 月 11 日 17:00 ～ 2024 年 3 月 18 日 10:15 の期間を対象としています
